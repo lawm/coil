@@ -44,7 +44,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun loadVideoFrames(): List<Image> {
-        return List(200) {
+        return List(1) {
             val videoFrameMicros = Random.nextLong(62_000_000L)
             val parameters = Parameters.Builder()
                 .set(VIDEO_FRAME_MICROS_KEY, videoFrameMicros)

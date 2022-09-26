@@ -1,6 +1,7 @@
 package coil.sample
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -95,7 +96,10 @@ private fun AssetTypeButton(
     onAssetTypeChange: (AssetType) -> Unit,
 ) {
     IconButton(
-        onClick = { onAssetTypeChange(assetType.next()) },
+        onClick = {
+            onAssetTypeChange(assetType.next())
+            Log.d("sample", "onClick")
+                  },
         content = { Text(assetType.name) }
     )
 }
@@ -171,6 +175,8 @@ private fun ListScreen(
                 placeholder = ColorPainter(Color(image.color)),
                 error = ColorPainter(Color.Red),
                 onSuccess = { placeholder = it.result.memoryCacheKey },
+                onLoading = { Log.d("sample", "onLoading") },
+                onError = { Log.d("sample", "onError") },
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
